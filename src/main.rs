@@ -2,8 +2,8 @@ mod dict;
 mod macros;
 mod word_component;
 use dictmacro::conjugate;
-use yew::{html, Component};
 use word_component::WordComponent;
+use yew::{html, Component};
 
 enum Msg {
     Search(String),
@@ -17,7 +17,7 @@ impl Component for Model {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties,_linkk: yew::ComponentLink<Self>) -> Self {
+    fn create(_props: Self::Properties, _linkk: yew::ComponentLink<Self>) -> Self {
         Self {
             search_text: "".to_string(),
         }

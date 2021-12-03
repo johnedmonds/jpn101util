@@ -15,11 +15,11 @@ impl Component for WordComponent {
 
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: yew::ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, _link: yew::ComponentLink<Self>) -> Self {
         Self { props }
     }
 
-    fn update(&mut self, msg: Self::Message) -> yew::ShouldRender {
+    fn update(&mut self, _msg: Self::Message) -> yew::ShouldRender {
         false
     }
 
