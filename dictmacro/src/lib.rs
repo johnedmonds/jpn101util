@@ -65,6 +65,7 @@ impl Parse for Conjugatable {
                     'す' => 'し',
                     'く' => 'き',
                     'る' => 'り',
+                    'ぐ' => 'ぎ',
                     _ => panic!(
                         "unexpected trailing letter {} in {}",
                         suffix, word.dictionary_form
