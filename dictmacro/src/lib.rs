@@ -41,7 +41,7 @@ impl Parse for Conjugatable {
         let base: String = word
             .dictionary_form
             .chars()
-            .take(word.dictionary_form.len() - 1)
+            .take(word.dictionary_form.chars().count() - 1)
             .collect();
         let word_type = match kind.as_str() {
             "ruverb" => WordType::Verb {
@@ -57,13 +57,14 @@ impl Parse for Conjugatable {
                 let suffix = word
                     .dictionary_form
                     .chars()
-                    .skip(word.dictionary_form.len() - 1)
+                    .skip(word.dictionary_form.chars().count() - 1)
                     .next()
                     .expect("Zero length string");
                 let new_suffix = match suffix {
                     'む' => 'み',
                     'す' => 'し',
                     'く' => 'き',
+                    'る' => 'り',
                     _ => panic!(
                         "unexpected trailing letter {} in {}",
                         suffix, word.dictionary_form

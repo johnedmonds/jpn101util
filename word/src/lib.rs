@@ -20,6 +20,7 @@ pub enum StaticWordType {
         conjugation: StaticConjugation,
     },
     Noun(StaticWord),
+    Adverb(StaticWord),
 }
 impl StaticWordType {
     pub fn word(&self) -> &StaticWord {
@@ -29,6 +30,7 @@ impl StaticWordType {
                 conjugation: _,
             } => word,
             &Self::Noun(ref word) => word,
+            &Self::Adverb(ref word) => word,
             &Self::Verb {
                 ref word,
                 conjugation: _,

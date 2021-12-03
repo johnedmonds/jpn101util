@@ -31,6 +31,7 @@ impl Component for WordComponent {
         let (word, conjugation) = match self.props.word_type {
             StaticWordType::Adjective { word, conjugation } => (word, Some(conjugation)),
             StaticWordType::Noun(word) => (word, None),
+            StaticWordType::Adverb(word) => (word, None),
             StaticWordType::Verb { word, conjugation } => (word, Some(conjugation)),
         };
         html! {
