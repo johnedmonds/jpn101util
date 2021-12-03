@@ -1,0 +1,8 @@
+li > div {
+  display: inline-block;
+  width: 150px;
+}
+
+li {
+  padding-top: 20px;
+}
