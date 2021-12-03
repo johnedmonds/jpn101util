@@ -38,19 +38,21 @@ impl Parse for Conjugatable {
             }
         };
 
-        let base:String = word.dictionary_form.chars().take(word.dictionary_form.len()-1).collect();
+        let base: String = word
+            .dictionary_form
+            .chars()
+            .take(word.dictionary_form.len() - 1)
+            .collect();
         let word_type = match kind.as_str() {
-            "ruverb" => {
-                WordType::Verb {
-                    conjugation: Conjugation {
-                        present_affirmative: format!("{}ます", base),
-                        present_negative: format!("{}ません", base),
-                        past_affirmative: format!("{}ました", base),
-                        past_negative: format!("{}ませんでした", base),
-                    },
-                    word,
-                }
-            }
+            "ruverb" => WordType::Verb {
+                conjugation: Conjugation {
+                    present_affirmative: format!("{}ます", base),
+                    present_negative: format!("{}ません", base),
+                    past_affirmative: format!("{}ました", base),
+                    past_negative: format!("{}ませんでした", base),
+                },
+                word,
+            },
             "uverb" => {
                 let suffix = word
                     .dictionary_form
@@ -67,11 +69,7 @@ impl Parse for Conjugatable {
                         suffix, word.dictionary_form
                     ),
                 };
-                let base = format!(
-                    "{}{}",
-                    base,
-                    new_suffix
-                );
+                let base = format!("{}{}", base, new_suffix);
                 WordType::Verb {
                     word,
                     conjugation: Conjugation {
@@ -82,28 +80,24 @@ impl Parse for Conjugatable {
                     },
                 }
             }
-            "iadjective" => {
-                WordType::Adjective {
-                    conjugation: Conjugation {
-                        present_affirmative: format!("{}です", word.dictionary_form),
-                        present_negative: format!("{}くないです", base),
-                        past_affirmative: format!("{}かったです", base),
-                        past_negative: format!("{}くなかったです", base),
-                    },
-                    word,
-                }
-            }
-            "naadjective" => {
-                WordType::Adjective {
-                    conjugation: Conjugation {
-                        present_affirmative: format!("{}です", base),
-                        present_negative: format!("{}じゃないです", base),
-                        past_affirmative: format!("{}でした", base),
-                        past_negative: format!("{}じゃなかったです", base),
-                    },
-                    word,
-                }
-            }
+            "iadjective" => WordType::Adjective {
+                conjugation: Conjugation {
+                    present_affirmative: format!("{}です", word.dictionary_form),
+                    present_negative: format!("{}くないです", base),
+                    past_affirmative: format!("{}かったです", base),
+                    past_negative: format!("{}くなかったです", base),
+                },
+                word,
+            },
+            "naadjective" => WordType::Adjective {
+                conjugation: Conjugation {
+                    present_affirmative: format!("{}です", base),
+                    present_negative: format!("{}じゃないです", base),
+                    past_affirmative: format!("{}でした", base),
+                    past_negative: format!("{}じゃなかったです", base),
+                },
+                word,
+            },
             _ => {
                 return Err(kind_error);
             }

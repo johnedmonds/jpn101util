@@ -14,3 +14,4 @@ edition = "2018"
 [dependencies]
 dictmacro = {path="dictmacro"}
 word = {path="word"}
+yew="0.18.0"
